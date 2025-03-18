@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Snake Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="game-header">
+            <h1>Neon Snake 🐍</h1>
+            <div class="score-box">
+                <span class="score-label">SCORE:</span>
+                <span id="score">0</span>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas"></canvas>
+        
+        <div class="controls">
+            <button class="btn" id="restartBtn">🔄 Restart</button>
+            <div class="mobile-controls">
+                <button class="arrow-btn" id="upBtn">↑</button>
+                <button class="arrow-btn" id="leftBtn">←</button>
+                <button class="arrow-btn" id="downBtn">↓</button>
+                <button class="arrow-btn" id="rightBtn">→</button>
+            </div>
+        </div>
+
+        <div class="game-over">
+            <div class="overlay">
+                <h2>GAME OVER!</h2>
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <button class="btn" id="playAgainBtn">🎮 Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.game-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 15px #00ff88;
+    color: #00ff88;
+}
+
+.score-box {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    margin: 1rem auto;
+    width: fit-content;
+    border: 2px solid #00ff88;
+}
+
+#gameCanvas {
+    background: #000;
+    border: 3px solid #00ff88;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+    max-width: 100%;
+}
+
+.controls {
+    margin-top: 2rem;
+}
+
+.btn {
+    background: #00ff88;
+    color: #1a1a1a;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0.5rem;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00ff88;
+}
+
+.mobile-controls {
+    display: none;
+}
+
+.game-over {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid #ff0055;
+}
+
+
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 1rem;
+    }
+
+    .arrow-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid #00ff88;
+        color: #fff;
+        padding: 1rem;
+        border-radius: 50%;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+}
+
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.score-box {
+    animation: pulse 2s infinite;
+}
+
+.overlay h2 {
+    text-shadow: 0 0 15px #ff0055;
+    animation: pulse 1s infinite alternate;
+}
+
+
+.powerup-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #00ff88;
+}
+
+
+.mobile-controls {
+    touch-action: manipulation;
+}
+
+.arrow-btn:active {
+    background: #00ff88;
+    transform: scale(0.9);
+}
