@@ -2,39 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Neon Snake Game</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <div class="game-header">
             <h1>Neon Snake 🐍</h1>
-            <div class="score-box">
-                <span class="score-label">SCORE:</span>
-                <span id="score">0</span>
+            <div class="stats-container">
+                <div class="score-box">
+                    <span class="score-label">SCORE:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="high-score-box">
+                    <span class="high-score-label">HIGH SCORE:</span>
+                    <span id="highScore">0</span>
+                </div>
             </div>
         </div>
         
-        <canvas id="gameCanvas"></canvas>
+        <div class="game-area">
+            <canvas id="gameCanvas"></canvas>
+            <div class="powerup-display">
+                <div class="powerup-item" id="speedBoost">
+                    <i class="fas fa-bolt"></i>
+                    <span class="timer"></span>
+                </div>
+                <div class="powerup-item" id="shield">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="timer"></span>
+                </div>
+                <div class="powerup-item" id="ghost">
+                    <i class="fas fa-ghost"></i>
+                    <span class="timer"></span>
+                </div>
+            </div>
+        </div>
         
         <div class="controls">
-            <button class="btn" id="restartBtn">🔄 Restart</button>
+            <div class="game-buttons">
+                <button class="btn" id="restartBtn">
+                    <i class="fas fa-redo"></i> Restart
+                </button>
+                <button class="btn" id="pauseBtn">
+                    <i class="fas fa-pause"></i> Pause
+                </button>
+            </div>
             <div class="mobile-controls">
-                <button class="arrow-btn" id="upBtn">↑</button>
-                <button class="arrow-btn" id="leftBtn">←</button>
-                <button class="arrow-btn" id="downBtn">↓</button>
-                <button class="arrow-btn" id="rightBtn">→</button>
+                <button class="arrow-btn" id="upBtn">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+                <div class="horizontal-controls">
+                    <button class="arrow-btn" id="leftBtn">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button class="arrow-btn" id="rightBtn">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <button class="arrow-btn" id="downBtn">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
             </div>
         </div>
 
         <div class="game-over">
             <div class="overlay">
                 <h2>GAME OVER!</h2>
-                <p>Final Score: <span id="finalScore">0</span></p>
-                <button class="btn" id="playAgainBtn">🎮 Play Again</button>
+                <div class="stats">
+                    <p>Final Score: <span id="finalScore">0</span></p>
+                    <p>High Score: <span id="finalHighScore">0</span></p>
+                    <p>Max Combo: <span id="finalCombo">0</span></p>
+                </div>
+                <div class="buttons">
+                    <button class="btn" id="playAgainBtn">
+                        <i class="fas fa-play"></i> Play Again
+                    </button>
+                    <button class="btn" id="shareBtn">
+                        <i class="fas fa-share"></i> Share Score
+                    </button>
+                </div>
             </div>
         </div>
+
+        <div class="pause-menu">
+            <div class="overlay">
+                <h2>PAUSED</h2>
+                <div class="buttons">
+                    <button class="btn" id="resumeBtn">
+                        <i class="fas fa-play"></i> Resume
+                    </button>
+                    <button class="btn" id="restartFromPauseBtn">
+                        <i class="fas fa-redo"></i> Restart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="device-orientation-warning">
+        <i class="fas fa-mobile-alt"></i>
+        <p>Please rotate your device for better gameplay</p>
     </div>
 
     <script src="{{ url_for('static', filename='js/game.js') }}"></script>
